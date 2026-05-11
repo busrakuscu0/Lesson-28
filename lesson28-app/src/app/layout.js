@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import Image from "next/image";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +24,53 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <nav className="p-4">
+          <div className="w-full max-w-7xl mx-auto px-2 flex justify-between items-center">
+            <Link href="/">
+              <Image
+                className="w-30 h-auto "
+                src="/NextDev.png"
+                alt="Next App logo"
+                width={182}
+                height={68}
+              />
+            </Link>
+            <ul className="flex gap-8 text-slate-700 font-semibold ">
+              <Link href="/">
+                <li className="hover:text-slate-500">Home</li>
+              </Link>
+              <Link href="/features">
+                <li className="hover:text-slate-500">Features</li>
+              </Link>
+              <Link href="/documentation">
+                <li className="hover:text-slate-500">Documentation</li>
+              </Link>
+            </ul>
+          </div>
+        </nav>
+        <main>{children}</main>
+        <footer className="w-full max-w-7xl mx-auto mb-12 px-2 flex items-center justify-between text-sm text-slate-600 ">
+          <div className="flex flex-col gap-2">
+            <Link href="/">
+              <Image
+                className="w-20 h-auto "
+                src="/NextDev.png"
+                alt="Next App logo"
+                width={182}
+                height={68}
+              />
+            </Link>
+            <span>© 2024 NextDev Practice Project. Built with Precision.</span>
+          </div>
+          <ul className="flex gap-4">
+            <li className="hover:text-slate-800">Privacy Policy</li>
+            <li className="hover:text-slate-800">Terms of Service</li>
+            <li className="hover:text-slate-800">Github</li>
+            <li className="hover:text-slate-800">Twitter</li>
+          </ul>
+        </footer>
+      </body>
     </html>
   );
 }
